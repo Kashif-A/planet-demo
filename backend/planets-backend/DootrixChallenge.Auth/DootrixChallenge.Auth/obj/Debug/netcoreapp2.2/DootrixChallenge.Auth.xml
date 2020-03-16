@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DootrixChallenge.Auth</name>
+    </assembly>
+    <members>
+        <member name="M:DootrixChallenge.Auth.Controllers.AccountController.CreateUserAsync(DootrixDemo.Auth.Dto.CreateUser)">
+            <summary>
+            Create a new User
+            </summary>
+            <param name="createUser"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DootrixChallenge.Auth.Controllers.AuthenticationController.Login(DootrixDemo.Auth.Dto.Login)">
+            <summary>
+            Login endpoint
+            </summary>
+            <param name="login"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DootrixChallenge.Auth.Controllers.AuthenticationController.Logout">
+            <summary>
+            Logout endpoint
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DootrixChallenge.Auth.Controllers.ServiceController">
+            <summary>
+            Service endpoint for checking application is working properly
+            </summary>
+        </member>
+        <member name="M:DootrixChallenge.Auth.DataAccess.AuthDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Make email and username unique
+            </summary>
+            <param name="builder"></param>
+        </member>
+    </members>
+</doc>
