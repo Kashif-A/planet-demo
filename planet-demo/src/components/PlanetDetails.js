@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 import PropTypes from 'prop-types'
 
+import { mockData } from '../mockData/mockData'
+
 const PlanetDetails = (props) => {
 	const { selectedPlanet, setSelectedPlanet } = props
 
@@ -9,7 +11,6 @@ const PlanetDetails = (props) => {
 		selectedPlanet: PropTypes.string,
 		setSelectedPlanet: PropTypes.func
 	}
-	
 
 	const [planetDetails, setPlanetDetails] = useState(null)
 	const [error, setError] = useState(null)
@@ -19,11 +20,12 @@ const PlanetDetails = (props) => {
 		setPlanetDetails(null)
 		selectedPlanet &&
 		setTimeout(() => {
-			fetch(`http://dootrixchallengeplanets-dev.eu-west-2.elasticbeanstalk.com/api/Planets/${selectedPlanet}`)
+			fetch(`http://planets-dev.eu-west-2.elasticbeanstalk.com/api/Planets/${selectedPlanet}`)
 				.then(p => {
 					p.json()
-						.then(payload => setPlanetDetails(payload))
+						.then(() => {})
 				}).catch(err => setError(err.message))
+			setPlanetDetails(mockData)
 		}, 2000)
 	}, [selectedPlanet])
 
@@ -54,7 +56,6 @@ const renderDetail = (planetDetails, setPlanetDetails, setSelectedPlanet, succes
 		<div style={{textAlign: 'center'}}>
 
 			{success && <p className='loading' style={{backgroundColor: '#000', padding: '20px'}}>UPDATE SUCCESSFULL...</p>}
-				
 
 			<h2 className='planetDetailName'>{name}</h2>
 
@@ -126,7 +127,7 @@ const renderCloseButton = (setSelectedPlanet) =>
 
 const handleSubmit = (e, planetDetails, setSelectedPlanet, setSuccess, setError) => {
 	e.preventDefault()
-	fetch('http://dootrixchallengeplanets-dev.eu-west-2.elasticbeanstalk.com/api/Planets', {
+	fetch('http://planets-dev.eu-west-2.elasticbeanstalk.com/api/Planets', {
 		method: 'PUT',
 		body: JSON.stringify({...planetDetails}),
 		headers: {'Content-Type': 'application/json'}

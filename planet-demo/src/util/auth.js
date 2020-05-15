@@ -1,5 +1,5 @@
 export const sendAuthRequest = (userName, password, setAuthenticated) =>{
-	fetch('http://dootrixchallengeauth-dev.eu-west-2.elasticbeanstalk.com/api/Authentication/Login', {
+	fetch('http://challengeauth-dev.eu-west-2.elasticbeanstalk.com/api/Authentication/Login', {
 		method: 'POST',
 		body: JSON.stringify({
 			userName,
@@ -16,7 +16,7 @@ export const sendAuthRequest = (userName, password, setAuthenticated) =>{
 }
 
 export const logout = (setAuthenticated) =>{
-	fetch('http://dootrixchallengeauth-dev.eu-west-2.elasticbeanstalk.com/api/Authentication/Logout')
+	fetch('http://challengeauth-dev.eu-west-2.elasticbeanstalk.com/api/Authentication/Logout')
 		.catch(() => setAuthenticated(null))
 	setAuthenticated(null)
 }
